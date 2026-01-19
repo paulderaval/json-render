@@ -1,3 +1,4 @@
+// Existing components
 export { Alert } from "./alert";
 export { Badge } from "./badge";
 export { Button } from "./button";
@@ -16,6 +17,25 @@ export { Table } from "./table";
 export { Text } from "./text";
 export { TextField } from "./text-field";
 
+// New chart components
+export { LineChart, AreaChart, PieChart, BarChart } from "./charts";
+
+// New layout components
+export { Container, Tabs, TabPanel, Section, Navbar, Footer } from "./layout";
+
+// New data display components
+export { Progress, Stat, DataList, Avatar, Code } from "./data";
+
+// New form components
+export { Checkbox, Toggle, Radio, Textarea } from "./forms";
+
+// New content components
+export { Callout, CodeBlock } from "./content";
+
+// New marketing components
+export { Hero, Feature, FeatureGrid, CTA } from "./marketing";
+
+// Import all for registry
 import { Alert } from "./alert";
 import { Badge } from "./badge";
 import { Button } from "./button";
@@ -34,7 +54,15 @@ import { Table } from "./table";
 import { Text } from "./text";
 import { TextField } from "./text-field";
 
+import { LineChart, AreaChart, PieChart, BarChart } from "./charts";
+import { Container, Tabs, TabPanel, Section, Navbar, Footer } from "./layout";
+import { Progress, Stat, DataList, Avatar, Code } from "./data";
+import { Checkbox, Toggle, Radio, Textarea } from "./forms";
+import { Callout, CodeBlock } from "./content";
+import { Hero, Feature, FeatureGrid, CTA } from "./marketing";
+
 export const componentRegistry = {
+  // Existing components
   Alert,
   Badge,
   Button,
@@ -52,4 +80,35 @@ export const componentRegistry = {
   Table,
   Text,
   TextField,
+  // Chart components (Recharts-based)
+  LineChart,
+  AreaChart,
+  PieChart,
+  BarChart,
+  // Layout components
+  Container,
+  Tabs,
+  TabPanel,
+  Section,
+  Navbar,
+  Footer,
+  // Data display components
+  Progress,
+  Stat,
+  DataList,
+  Avatar,
+  Code,
+  // Form components
+  Checkbox,
+  Toggle,
+  Radio,
+  Textarea,
+  // Content components
+  Callout,
+  CodeBlock,
+  // Marketing components
+  Hero,
+  Feature,
+  FeatureGrid,
+  CTA,
 };

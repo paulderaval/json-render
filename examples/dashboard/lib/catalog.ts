@@ -1,5 +1,11 @@
 import { createCatalog } from "@json-render/core";
 import { z } from "zod";
+import { chartComponents } from "./catalogs/charts";
+import { layoutComponents } from "./catalogs/layout";
+import { dataComponents } from "./catalogs/data";
+import { formComponents } from "./catalogs/forms";
+import { contentComponents } from "./catalogs/content";
+import { marketingComponents } from "./catalogs/marketing";
 
 /**
  * Dashboard component catalog
@@ -13,6 +19,10 @@ import { z } from "zod";
 export const dashboardCatalog = createCatalog({
   name: "dashboard",
   components: {
+    // ============================================
+    // EXISTING COMPONENTS (kept for backwards compatibility)
+    // ============================================
+
     // Layout Components
     Card: {
       props: z.object({
@@ -62,7 +72,7 @@ export const dashboardCatalog = createCatalog({
         title: z.string().nullable(),
         height: z.number().nullable(),
       }),
-      description: "Display a chart from array data",
+      description: "Display a simple chart from array data (legacy)",
     },
 
     Table: {
@@ -124,6 +134,25 @@ export const dashboardCatalog = createCatalog({
       description: "Date picker input",
     },
 
+    TextField: {
+      props: z.object({
+        label: z.string(),
+        valuePath: z.string(),
+        placeholder: z.string().nullable(),
+        type: z.enum(["text", "email", "password", "number"]).nullable(),
+        checks: z
+          .array(
+            z.object({
+              fn: z.string(),
+              message: z.string(),
+            }),
+          )
+          .nullable(),
+        validateOn: z.enum(["change", "blur", "submit"]).nullable(),
+      }),
+      description: "Text input field with validation",
+    },
+
     // Typography
     Heading: {
       props: z.object({
@@ -182,12 +211,40 @@ export const dashboardCatalog = createCatalog({
       }),
       description: "Empty state placeholder",
     },
+
+    // ============================================
+    // NEW COMPONENTS
+    // ============================================
+
+    // Charts (Recharts-based)
+    ...chartComponents,
+
+    // Layout
+    ...layoutComponents,
+
+    // Data Display
+    ...dataComponents,
+
+    // Forms
+    ...formComponents,
+
+    // Content
+    ...contentComponents,
+
+    // Marketing
+    ...marketingComponents,
   },
   actions: {
     export_report: { description: "Export the current dashboard to PDF" },
     refresh_data: { description: "Refresh all metrics and charts" },
     view_details: { description: "View detailed information" },
     apply_filter: { description: "Apply the current filter settings" },
+    navigate: { description: "Navigate to a different page" },
+    submit_form: { description: "Submit form data" },
+    get_started: { description: "Navigate to getting started" },
+    learn_more: { description: "Learn more about the product" },
+    sign_up: { description: "Sign up for the service" },
+    contact: { description: "Contact the team" },
   },
   validation: "strict",
 });
